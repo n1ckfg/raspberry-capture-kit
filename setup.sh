@@ -27,7 +27,7 @@ sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules && udevadm trigger 
 cd ..
 
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
 source ~/.bashrc
 
 # 3. Protobuf
@@ -61,11 +61,12 @@ rm libtbb-dev_2018U2_armhf.deb
 # 5. OpenCV for Python
 # https://learnopencv.com/install-opencv-4-on-raspberry-pi/
 # https://stackoverflow.com/questions/59080094/raspberry-pi-and-opencv-cant-install-libhdf5-100
-#sudo apt autoremove -y libopencv3
-#wget https://github.com/mt08xx/files/raw/master/opencv-rpi/libopencv3_3.4.3-20180907.1_armhf.deb
-#sudo dpkg -i libopencv3_3.4.3-20180907.1_armhf.deb
-#sudo ldconfig
-pip3 install opencv-contrib-python
+sudo apt autoremove -y libopencv3
+wget https://github.com/mt08xx/files/raw/master/opencv-rpi/libopencv3_3.4.3-20180907.1_armhf.deb
+sudo dpkg -i libopencv3_3.4.3-20180907.1_armhf.deb
+sudo ldconfig
+pip3 install opencv-python
+#pip3 install opencv-contrib-python
 
 # 6. GStreamer
 # https://docs.mopidy.com/en/v0.8.0/installation/gstreamer/
